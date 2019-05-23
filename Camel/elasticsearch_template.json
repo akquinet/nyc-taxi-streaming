@@ -1,0 +1,63 @@
+{
+  "template": "taxi_nyc",
+  "order": 0,
+  "settings": {
+    "number_of_shards": 1
+  },
+  "mappings": {
+    "trip": {
+      "properties": {
+        "dropoffGeoPoint": {
+          "properties": {
+            "fragment": {
+              "type": "boolean"
+            },
+            "geohash": {
+              "type": "geo_point"
+            },
+            "lat": {
+              "type": "float"
+            },
+            "lon": {
+              "type": "float"
+            }
+          }
+        },
+        "fareAmount": {
+          "type": "float"
+        },
+        "key": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "passengerCount": {
+          "type": "long"
+        },
+        "pickupDate": {
+          "type": "date"
+        },
+        "pickupGeoPoint": {
+          "properties": {
+            "fragment": {
+              "type": "boolean"
+            },
+            "geohash": {
+              "type": "geo_point"
+            },
+            "lat": {
+              "type": "float"
+            },
+            "lon": {
+              "type": "float"
+            }
+          }
+        }
+      }
+    }
+  }
+}
