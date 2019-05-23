@@ -38,6 +38,7 @@ Shutdown the complete system
 
 `
 $ docker-compose down
+`
 
 ## Technologies
 
