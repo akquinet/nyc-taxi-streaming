@@ -9,6 +9,7 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -21,10 +22,17 @@ public class FlinkService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FlinkService.class);
 
-    String inputTopic = "rawTaxi";
-    String outputTopic = "cookedTaxi";
-    String address = "localhost:9092";
-    String groupId = "flink-kafka-group";
+    @Value("${flink.prop.kafka-input}")
+    private String inputTopic;
+
+    @Value("${flink.prop.kafka.output}")
+    private String outputTopic;
+
+    @Value("${flink.prop.address}")
+    private String address;
+
+    @Value("${flink.prop.group-id}")
+    private String groupId;
 
     @PostConstruct
     public void init() {
@@ -44,7 +52,6 @@ public class FlinkService {
 
         enrichedNYCRides.addSink(flinkKafkaProducer);
 
-        LOGGER.info("Print Input Stream");
 
         try {
             environment.execute();

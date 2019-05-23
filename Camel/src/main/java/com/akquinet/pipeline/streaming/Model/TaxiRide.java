@@ -1,9 +1,7 @@
 package com.akquinet.pipeline.streaming.Model;
 
 import com.fasterxml.jackson.annotation.*;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.apache.camel.dataformat.bindy.annotation.CsvRecord;
 import org.apache.camel.dataformat.bindy.annotation.DataField;
 
@@ -11,8 +9,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 @NoArgsConstructor
-@Getter
-@Setter
 @JsonRootName(value = "cookedTaxi")
 @CsvRecord( separator = ",")
 public class TaxiRide implements Serializable {

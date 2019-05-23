@@ -6,6 +6,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.model.dataformat.BindyType;
 import org.apache.camel.model.dataformat.JsonLibrary;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /*
@@ -19,24 +20,32 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessageProducer extends RouteBuilder {
 
+    @Value("${camel.message-producer.from}")
+    private String inputFilePath;
+
+    @Value("${camel.message-producer.error}")
+    private String outputErrorPath;
+
+    @Value("${camel.message-producer.kafka}")
+    private String outputKafkaPath;
+
     @Override
     public final void configure() throws Exception {
 
         JacksonDataFormat jacksonDataFormat = new JacksonDataFormat();
         jacksonDataFormat.setPrettyPrint(true);
 
-        errorHandler(deadLetterChannel("file:../Data/data_error")
+        errorHandler(deadLetterChannel(outputErrorPath)
                 .useOriginalMessage()
                 .retryAttemptedLogLevel(LoggingLevel.WARN).log("An Error has occurred while processing " +
                         "${headers.CamelFileName} , please check the " +
                         "ErrorLog Folder to view the offending file"));
 
-        from("file:../Data/?noop=true&maxMessagesPerPoll=1&delay=5000")
+        from(inputFilePath).routeId("NYC Taxi Streamer")
                 .streamCaching()
                 .split(body().tokenize("\n")).streaming()
                 .unmarshal().bindy(BindyType.Csv, TaxiRide.class)
-                .routeId("NYC Taxi Streamer")
                 .marshal().json(JsonLibrary.Jackson, TaxiRide.class)
-                .to("kafka:rawTaxi?brokers=localhost:9092");
+                .to(outputKafkaPath);
     }
 }
