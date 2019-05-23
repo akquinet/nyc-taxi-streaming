@@ -34,6 +34,8 @@ Startup the complete system
 $ docker-compose up
 `
 
+Then navigating to `https://localhost:5601`in your browser.
+
 Shutdown the complete system
 
 `
@@ -72,6 +74,8 @@ Elasticsearch (https://www.elastic.co/) is a search engine based on the Lucene l
 ### Kibana
 
 Kibana (https://www.elastic.co/products/kibana) is an open source data visualization plugin for Elasticsearch. It provides visualization capabilities on top of the content indexed on an Elasticsearch cluster. Users can create bar, line and scatter plots, or pie charts and maps on top of large volumes of data.
+
+This can be accessed when the app is running via entering: `https://localhost:5601` into your browser.
 
 ### MongoDB
 
