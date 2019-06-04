@@ -19,13 +19,13 @@ public class TaxiRide implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ", timezone = "UTC")
     private Date pickupDate;
     @JsonProperty("pickupLong")
-    private float pickupLong;
+    private double pickupLong;
     @JsonProperty("pickupLat")
-    private float pickupLat;
+    private double pickupLat;
     @JsonProperty("dropoffLong")
-    private float dropoffLong;
+    private double dropoffLong;
     @JsonProperty("dropoffLat")
-    private float dropoffLat;
+    private double dropoffLat;
     @JsonProperty("passengerCount")
     private int passengerCount;
 
@@ -67,35 +67,35 @@ public class TaxiRide implements Serializable {
         this.pickupDate = pickupDate;
     }
 
-    public float getPickupLong() {
+    public double getPickupLong() {
         return pickupLong;
     }
 
-    public void setPickupLong(final float pickupLong) {
+    public void setPickupLong(final double pickupLong) {
         this.pickupLong = pickupLong;
     }
 
-    public float getPickupLat() {
+    public double getPickupLat() {
         return pickupLat;
     }
 
-    public void setPickupLat(final float pickupLat) {
+    public void setPickupLat(final double pickupLat) {
         this.pickupLat = pickupLat;
     }
 
-    public float getDropoffLong() {
+    public double getDropoffLong() {
         return dropoffLong;
     }
 
-    public void setDropoffLong(final float dropoffLong) {
+    public void setDropoffLong(final double dropoffLong) {
         this.dropoffLong = dropoffLong;
     }
 
-    public float getDropoffLat() {
+    public double getDropoffLat() {
         return dropoffLat;
     }
 
-    public void setDropoffLat(final float dropoffLat) {
+    public void setDropoffLat(final double dropoffLat) {
         this.dropoffLat = dropoffLat;
     }
 

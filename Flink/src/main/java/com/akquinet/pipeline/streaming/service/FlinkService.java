@@ -1,5 +1,6 @@
 package com.akquinet.pipeline.streaming.service;
 
+import com.akquinet.pipeline.streaming.Filter.NYCFilter;
 import com.akquinet.pipeline.streaming.Mapper.Enrichment;
 import com.akquinet.pipeline.streaming.model.EnrichedRide;
 import com.akquinet.pipeline.streaming.model.TaxiRide;
@@ -48,7 +49,9 @@ public class FlinkService {
         FlinkKafkaProducer<EnrichedRide> flinkKafkaProducer = createStringProducer(
                 outputTopic, address);
 
-        DataStream<EnrichedRide> enrichedNYCRides = stringInputStream.map(new Enrichment());
+        DataStream<TaxiRide> filterNYCRide = stringInputStream.filter(new NYCFilter());
+
+        DataStream<EnrichedRide> enrichedNYCRides = filterNYCRide.map(new Enrichment());
 
         enrichedNYCRides.addSink(flinkKafkaProducer);
 
