@@ -34,18 +34,6 @@ public class EnrichedRide implements Serializable {
         this.dropoffGeoPoint = new GeoPoint(ride.getDropoffLat(), ride.getDropoffLong());
     }
 
-    @Override
-    public String toString() {
-        return "EnrichedRide{" +
-                "key='" + key + '\'' +
-                ", fareAmount=" + fareAmount +
-                ", pickupDate=" + pickupDate +
-                ", passengerCount=" + passengerCount +
-                ", pickupCoord='" + pickupGeoPoint + '\'' +
-                ", dropoffCoord='" + dropoffGeoPoint + '\'' +
-                '}';
-    }
-
     public String getKey() {
         return key;
     }
@@ -92,5 +80,17 @@ public class EnrichedRide implements Serializable {
 
     public void setDropoffGeoPoint(final GeoPoint dropoffGeoPoint) {
         this.dropoffGeoPoint = dropoffGeoPoint;
+    }
+
+    @Override
+    public String toString() {
+        return "EnrichedRide{" +
+                "key='" + key + '\'' +
+                ", fareAmount=" + fareAmount +
+                ", pickupDate=" + pickupDate +
+                ", passengerCount=" + passengerCount +
+                ", pickupGeoPoint=" + pickupGeoPoint +
+                ", dropoffGeoPoint=" + dropoffGeoPoint +
+                '}';
     }
 }

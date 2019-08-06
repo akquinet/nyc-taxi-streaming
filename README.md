@@ -1,6 +1,6 @@
 # Streaming Data Pipeline
 
-The purpose of this Application is to provide a streaming ETL pipeline implementing a Lambda architecture.
+The purpose of this Application is to provide a streaming ETL pipeline implementing a Kappa architecture.
 
 ## Requirements
 
