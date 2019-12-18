@@ -25,6 +25,19 @@ services:
         networks:
             - streaming
 
+    logstash:
+        image: logstash:6.7.2
+        volumes:
+            - ./Camel/logstash.conf:/etc/logstash.conf
+            - ./Camel/taxi_nyc.json:/usr/share/logstash/templates/taxi_nyc.json
+        command: logstash -f /etc/logstash.conf
+        depends_on:
+            - elasticsearch
+        ports:
+            - "5959:5959"
+        networks:
+            - streaming
+
     kibana:
         image: docker.elastic.co/kibana/kibana:6.7.2
         ports:
