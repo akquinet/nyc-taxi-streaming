@@ -77,12 +77,6 @@ Kibana (https://www.elastic.co/products/kibana) is an open source data visualiza
 
 This can be accessed when the app is running via entering: `https://localhost:5601` into your browser.
 
-### MongoDB
-
-MongoDB (https://www.mongodb.com/) is a cross-platform document-oriented database program. Classified as a NoSQL 
-database program, MongoDB uses JSON-like documents with schemata. MongoDB is developed by MongoDB Inc. and licensed 
-under the Server Side Public License (SSPL).
-
 ### Docker
 
 Docker (https://www.docker.com/) is a collection of interoperating software-as-a-service and platform-as-a-service offerings that employ operating-system-level virtualization to cultivate development and delivery of software inside standardized software packages called containers.

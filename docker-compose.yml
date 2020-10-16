@@ -83,25 +83,11 @@ services:
             camel.message-producer.from: file:/Data/?noop=true&maxMessagesPerPoll=1&delay=5000
             camel.message-producer.kafka: kafka:rawTaxi?brokers=kafka-gateway:9092
             camel.message-consumer.kafka: kafka:rawTaxi?brokers=kafka-gateway:9092
-            mongodb.host: mongodb-gateway
             camel.elastic.kafka: kafka:cookedTaxi?brokers=kafka-gateway:9092
         depends_on:
             - kafka-gateway
         networks:
             - streaming
-
-    mongodb-gateway:
-        container_name: mongo
-        image: mongo:3.6
-        volumes:
-            - ./data/db:/var/micro-data/mongodb/data/db
-        environment:
-            - MONGODB_INITDB_DATABASE=taxi
-            - MONGODB_INITDB_COLLECTION=nyc
-        ports:
-          - 27017:27017
-        networks:
-          - streaming
 
 networks:
   streaming:
