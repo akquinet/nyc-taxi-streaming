@@ -17,7 +17,7 @@ The purpose of this Application is to provide a streaming ETL pipeline implement
 The buildsystem is based on `maven`. To build all the components just enter:
 
 `
-$ ./mvnw clean install
+$ mvn clean install
 `
 
 Beforehand the build process, Maven will be automatically downloaded and installed.
