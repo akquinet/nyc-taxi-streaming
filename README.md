@@ -1,4 +1,4 @@
-# Streaming Data Pipeline
+# NYC Taxi Streaming
 
 The purpose of this Application is to provide a streaming ETL pipeline implementing a Kappa architecture.
 
